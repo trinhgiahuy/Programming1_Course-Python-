@@ -66,7 +66,7 @@ where X, Y, and Z are replaced with correct values. If there are more than one m
 None of the respondents drink too much coffee
 ```
 ------
-* [Shopping_basket_template]()
+* [Shopping_basket_template](https://github.com/trinhgiahuy/Programming1_Course-Python-/blob/master/src/shopping_basket_template.py)
 
 ### Print store information
 Command letter **S** prints stores and their product information. Both the store names and the product names must be printed in an alphabetical order:
@@ -159,7 +159,7 @@ There is no store selling all those products.
 Input command (S, P, C, Q):
 ```
 -----
-* [Routing_Protocol_Simulator]()
+* [Routing_Protocol_Simulator](https://github.com/trinhgiahuy/Programming1_Course-Python-/blob/master/src/Routing_Protocol_Simulator.py)
 
 ![](https://github.com/trinhgiahuy/Programming1_Course-Python-/blob/master/img/routing_protocol.png?raw=true)
 
