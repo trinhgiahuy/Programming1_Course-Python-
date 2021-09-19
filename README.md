@@ -694,11 +694,11 @@ Sending router: R5
 > Q
 Simulator closes.
 ```
-RR (route request)
+## RR (route request)
 Implement the command "RR", that tells if a certain router has a connection to a certain network.
 
 Implement the method has_route, that has the network name (str) as a parameter and prints the following information on the screen.
-
+```
 Network file: network2.txt
 > PA
   R1
@@ -772,3 +772,5 @@ Enter network name: 100
 Network 100 is 3 hops away
 > Q
 Simulator closes.
+```
+-----
