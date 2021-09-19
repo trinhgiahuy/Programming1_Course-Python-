@@ -161,9 +161,9 @@ Input command (S, P, C, Q):
 -----
 * [Routing_Protocol_Simulator]()
 
-![]()
+![](https://github.com/trinhgiahuy/Programming1_Course-Python-/blob/master/img/routing_protocol.png?raw=true)
 
-##**Commands**
+## Commands
 When the program is started, it will first request the name of the input file according to the example below. If the user does not enter a filename, the program is started with no routers defined at all. First, implement a version that always starts with no routers defined. Later on you will also implement reading the router data from the input file. The final version of the program can be used both with or without entering a filename.
 
 After requesting the input file, the program waits for a command from the user. If the user enters an unknown command the program will print an error message defined in the program code template. The command Q quits.
@@ -184,7 +184,7 @@ Q (quit)
 Simulator closes.
 ```
 
-##**NR (new router)**
+## NR (new router)
 Define a new class called Router. Implement a constructor that takes the name of the router as a string parameter. This is the only parameter. The constructor is automatically tested when you submit your solution and the test fails if the parameters are not as instructed.
 
 Later on, you need to add methods for adding neighbouring routers and the routing table for the router. You can add the attributes for storing these also later on, when you know how the router works.
@@ -210,11 +210,11 @@ Enter a new name: R6
 > Q
 Simulator closes.
 ```
-P (print)
+## P (print)
 Implement the command "P" that prints the name of the router and its neighbour routers and the routing table. If there is no router with this name, an error message will be provided for the user.
 
 Implement the method print_info, that has no parameters and prints the information in the following format.
-
+```
 Network file:
 > NR
 Enter a new name: R1
@@ -228,9 +228,10 @@ Enter router name: R8
 Router was not found.
 > Q
 Simulator closes.
+```
 So far, we haven't added any neighbouring routers or anything in the routing table. Therefore, there is only empty space after the strings "N:" and "R:" in the example printouts.
 
-C (connect)
+## C (connect)
 Implement the command "C", that connects two routers with each other. After the execution of this command, these two routers are neighbours to each other. This command requests names of two routers and adds the information about a new neighbouring router to both of them.
 
 Implement the method add_neighbour, that has a router object as a parameter. It adds the name of the new neighbour router into the information of the router for which the method is called. This method only adds the neighbour to the router it is called for (it doesn't modify the state of both the objects but only one object, thus you need to call this method separately for both of the routers).
@@ -238,7 +239,7 @@ Implement the method add_neighbour, that has a router object as a parameter. It 
 Each router can have multiple neighbouring routers. The neighbouring routers are printed in an alphabetical order and the names are separated by commas and spaces.
 
 Add an attribute for storing the information related to the neighbouring routers and the printing of its content in the print_info-method.
-
+```
 Network file:
 > NR
 Enter a new name: R1
@@ -269,7 +270,8 @@ Enter router name: R7
     R:
 > Q
 Simulator closes.
-NN (new network)
+```
+## NN (new network)
 Implement the command "NN", that adds a new network for a router. When a network is added, the router will be its edge router. This means that the distance between this router and the network is 0.
 
 The edge router is the only router that can directly access this network. If you want to connect to this network you need to connect through the edge router. In the figure in the beginning of the task description, the router R3 is the edge router of the network 194.194.201.0 and the router R1 is the edge router of two networks. The distance of R2 to all of these three networks is 1.
@@ -277,7 +279,7 @@ The edge router is the only router that can directly access this network. If you
 Practically, if R1 and R2 are neighbours, and R2 is the edge router of the network 100, then the distance from R2 to network 100 is 0 (zero) and the distance from R1 to network 100 is 1 (one). At this point, do not implement a feature that transfers the information related to the networks to the neighbouring routers. Adding a network to a router only affects the state of this one router-object. The network appears in the routing table of this router when the information is printed.
 
 Implent the method add_network, that has the parameters address of the network (str) and the distance to the network (int). Add an attribute for storing the routing table and the printing of its content in the method print_info.
-
+```
 Network file:
 > NR
 Enter a new name: R1
@@ -307,9 +309,10 @@ Enter router name: R3
     R:
 > Q
 Simulator closes.
-PA (print all)
+```
+## PA (print all)
 Implement the command "PA", that prints the information related to all the routers in an alphabetical order according to their names. This command naturally uses the method print_info that was implemented earlier.
-
+```
 Network file:
 > NR
 Enter a new name: R1
@@ -346,20 +349,21 @@ Enter distance: 0
     R: 300:0
 > Q
 Simulator closes.
-Reading the input file
+```
+## Reading the input file
 Implement the reading of the input file and creating router objects according to the information stored in the file.
 
 The format of the files is: name!neighbour1;neighbour2...;neighbourN!network1:distance1;network2:distance2;...
 
 Content of the line:
 
-The line always contains two exclamation marks
-The name of the router is on the left side of the first exclamation mark
-Between the exclamation marks there are the names of the neighbouring routers separated by semicolons or nothing if there are no neighbouring routers
-The neighbour-relationships is listed twice in the file: in the lines of both the routers
-On the right side of the later exclamation mark there is the content of the routing table
+  1. The line always contains two exclamation marks
+  2. The name of the router is on the left side of the first exclamation mark
+  3. Between the exclamation marks there are the names of the neighbouring routers separated by semicolons or nothing if there are no neighbouring routers
+  4. The neighbour-relationships is listed twice in the file: in the lines of both the routers
+  5. On the right side of the later exclamation mark there is the content of the routing table
 Examples of legal input file lines:
-
+```
   R1!!
   R1 is a router that has no neighbours and no networks.
 
@@ -373,10 +377,11 @@ Examples of legal input file lines:
   R1!R2;R5;R9!200:0
   R1 is a router that has neighbours R2, R5 and R9.
   R1 also has the network 200 by the distance 0 (= edge router).
+```
 You can download input files representing different kinds of networks here: network1.txt, network2.txt, network3.txt
 
 Using the previous inputfiles the program has to work like this:
-
+```
 Network file: network1.txt
 > PA
   R1
@@ -390,6 +395,8 @@ Network file: network1.txt
     R: 300:0
 > Q
 Simulator closes.
+```
+```
 Network file: network2.txt
 > PA
   R1
@@ -409,6 +416,8 @@ Network file: network2.txt
     R: 500:0
 > Q
 Simulator closes.
+```
+```
 Network file: network3.txt
 > PA
   R1
@@ -434,11 +443,13 @@ Network file: network3.txt
     R: 700:0
 > Q
 Simulator closes.
+```
 If the file can not be opened or it contains a line which is not in the format described above, an error message is printed and program ends immediately.
-
+```
 Network file: a_file_that_doesnt_exist.txt
 Error: the file could not be read or there is something wrong with it.
-S (send)
+```
+## S (send)
 Real routers communicate with eachother in most of the routing protocols so that after some time interval all the routers send the content of their routing table to their neighbouring routers. The router looks through all the routing information it receives from its neighbour and if needed modifies its own routing table accordingly. This way the routers sustain information about the network state. The information about disconnected connections and new faster routes propagates from router to its neighbours.
 
 Implement the command "S", that requests the name of a router and gives this router a command to send its routing table to its neigbouring routers. Using this command, the student of of computer networking could study how the routing tables are modified when the routers communicate with eachother.
@@ -446,7 +457,7 @@ Implement the command "S", that requests the name of a router and gives this rou
 Implement the method receive_routing_table, that has a router-object as its parameter. The method adds the content of the other router's routing table into its own routing table.
 
 When the command "S" is executed, this method is to be called for the router's neighbours. If you want R1 to send its routing table to R2, you will call the method receive_routing_table of the object R2 and give the the object R1 as a parameter. This means R2 receives the routing table when R1 sends it. When this command "S" is executed, a method call is handled by all the receiving routers, i.e. all the neighbouring routers of the router that sends its routing table.
-
+```
 Network file: network1.txt
 > PA
   R1
@@ -509,8 +520,9 @@ Sending router: R2
     R: 300:0
 > Q
 Simulator closes.
+```
 Another example including more networks:
-
+```
 Network file: network3.txt
 > PA
   R1
@@ -681,6 +693,7 @@ Sending router: R5
     R: 700:0
 > Q
 Simulator closes.
+```
 RR (route request)
 Implement the command "RR", that tells if a certain router has a connection to a certain network.
 
